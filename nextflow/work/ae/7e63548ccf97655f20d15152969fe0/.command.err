@@ -1,1 +1,0 @@
-FATAL:   While checking container encryption: could not open image /mnt/scratch45/c2006576/singularity/cache/antismash-standalone.img: failed to retrieve path for /mnt/scratch45/c2006576/singularity/cache/antismash-standalone.img: lstat /mnt/scratch45/c2006576/singularity/cache/antismash-standalone.img: no such file or directory
