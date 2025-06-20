@@ -1,0 +1,93 @@
+Jun-20 09:35:36.702 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -c nextflow.config
+Jun-20 09:35:36.827 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+Jun-20 09:35:36.848 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/trinity/home/c2006576/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+Jun-20 09:35:36.892 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-20 09:35:36.894 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-20 09:35:36.897 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jun-20 09:35:36.912 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-20 09:35:36.936 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/nextflow.config
+Jun-20 09:35:36.939 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/nextflow.config
+Jun-20 09:35:36.941 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/nextflow.config
+Jun-20 09:35:36.942 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/nextflow.config
+Jun-20 09:35:36.973 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /trinity/home/c2006576/.nextflow/secrets/store.json
+Jun-20 09:35:36.977 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@6999cd39] - activable => nextflow.secret.LocalSecretsProvider@6999cd39
+Jun-20 09:35:36.983 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jun-20 09:35:37.492 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jun-20 09:35:37.534 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jun-20 09:35:37.550 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [reverent_dubinsky] DSL2 - revision: 6e73952c61
+Jun-20 09:35:37.552 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-20 09:35:37.552 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-20 09:35:37.620 [main] DEBUG nextflow.Session - Session UUID: f04e5ceb-d5fb-419c-b1e5-6a1f64c183b2
+Jun-20 09:35:37.620 [main] DEBUG nextflow.Session - Run name: reverent_dubinsky
+Jun-20 09:35:37.620 [main] DEBUG nextflow.Session - Executor pool size: 12
+Jun-20 09:35:37.630 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jun-20 09:35:37.637 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=36; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun-20 09:35:37.663 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC (08:05 BST)
+  System: Linux 4.18.0-553.8.1.el8_10.x86_64
+  Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 17.0.1+12-LTS-39
+  Encoding: UTF-8 (UTF-8)
+  Process: 1834726@iago.bios.cf.ac.uk [10.244.2.4]
+  CPUs: 12 - Mem: 23.2 GB (195.5 MB) - Swap: 7.9 GB (7.4 GB)
+Jun-20 09:35:37.690 [main] DEBUG nextflow.Session - Work-dir: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/work [nfs]
+Jun-20 09:35:37.691 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/bin
+Jun-20 09:35:37.702 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-20 09:35:37.713 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-20 09:35:37.741 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-20 09:35:37.753 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 13; maxThreads: 1000
+Jun-20 09:35:37.819 [main] DEBUG nextflow.Session - Session start
+Jun-20 09:35:38.113 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-20 09:35:38.506 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-20 09:35:38.507 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-20 09:35:38.518 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jun-20 09:35:38.525 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jun-20 09:35:38.527 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jun-20 09:35:38.530 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jun-20 09:35:38.601 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: antiSMASH_PREP, antiSMASH
+Jun-20 09:35:38.602 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jun-20 09:35:38.609 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > antiSMASH_PREP
+Jun-20 09:35:38.610 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_99d08d04d5168ddc: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/./modules/antiSMASH_PREP/main.nf
+  Script_6672954015fe9a86: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/main.nf
+  Script_8c5fbe5b49879365: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/./modules/antiSMASH/main.nf
+Jun-20 09:35:38.610 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun-20 09:35:38.610 [main] DEBUG nextflow.Session - Session await
+Jun-20 09:35:38.685 [Actor Thread 9] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=oras://community.wave.seqera.io/library/antismash:8.0.1--a8462cf3e67bb778; path=/mnt/scratch45/${USER}/singularity/cache/community.wave.seqera.io-library-antismash-8.0.1--a8462cf3e67bb778.img
+Jun-20 09:35:38.850 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process antiSMASH_PREP > jobId: 743126; workDir: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/work/0b/632f8ab605accff4112f125db6b14c
+Jun-20 09:35:38.851 [Task submitter] INFO  nextflow.Session - [0b/632f8a] Submitted process > antiSMASH_PREP
+Jun-20 09:35:43.541 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 743126; id: 1; name: antiSMASH_PREP; status: COMPLETED; exit: 255; error: -; workDir: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/work/0b/632f8ab605accff4112f125db6b14c started: 1750408543535; exited: 2025-06-20T08:35:39.684372608Z; ]
+Jun-20 09:35:43.542 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=36; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun-20 09:35:43.549 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=antiSMASH_PREP; work-dir=/mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/work/0b/632f8ab605accff4112f125db6b14c
+  error [nextflow.exception.ProcessFailedException]: Process `antiSMASH_PREP` terminated with an error exit status (255)
+Jun-20 09:35:43.588 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'antiSMASH_PREP'
+
+Caused by:
+  Process `antiSMASH_PREP` terminated with an error exit status (255)
+
+
+Command executed:
+
+  download-antismash-databases --database-dir "data/database/antismashdb/"
+
+Command exit status:
+  255
+
+Command output:
+  (empty)
+
+Command error:
+  FATAL:   While checking container encryption: could not open image /mnt/scratch45/c2006576/singularity/cache/community.wave.seqera.io-library-antismash-8.0.1--a8462cf3e67bb778.img: failed to retrieve path for /mnt/scratch45/c2006576/singularity/cache/community.wave.seqera.io-library-antismash-8.0.1--a8462cf3e67bb778.img: lstat /mnt/scratch45/c2006576/singularity/cache/community.wave.seqera.io-library-antismash-8.0.1--a8462cf3e67bb778.img: no such file or directory
+
+Work dir:
+  /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/work/0b/632f8ab605accff4112f125db6b14c
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+Jun-20 09:35:43.595 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun-20 09:35:43.597 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `antiSMASH_PREP` terminated with an error exit status (255)
+Jun-20 09:35:43.612 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jun-20 09:35:43.612 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun-20 09:35:43.619 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=5ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+Jun-20 09:35:43.807 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun-20 09:35:43.825 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

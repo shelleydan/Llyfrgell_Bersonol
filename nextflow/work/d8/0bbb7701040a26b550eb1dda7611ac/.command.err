@@ -1,0 +1,72 @@
+INFO:    Environment variable SINGULARITYENV_TMPDIR is set, but APPTAINERENV_TMPDIR is preferred
+INFO:    Environment variable SINGULARITYENV_NXF_TASK_WORKDIR is set, but APPTAINERENV_NXF_TASK_WORKDIR is preferred
+mkdir -p failed for path /trinity/home/c2006576/.config/matplotlib: [Errno 30] Read-only file system: '/trinity'
+Matplotlib created a temporary cache directory at /tmp/matplotlib-oktvad9e because there was an issue with the default path (/trinity/home/c2006576/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.11/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/opt/conda/lib/python3.11/http/client.py", line 1303, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/opt/conda/lib/python3.11/http/client.py", line 1349, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/opt/conda/lib/python3.11/http/client.py", line 1298, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/opt/conda/lib/python3.11/http/client.py", line 1058, in _send_output
+    self.send(msg)
+  File "/opt/conda/lib/python3.11/http/client.py", line 996, in send
+    self.connect()
+  File "/opt/conda/lib/python3.11/http/client.py", line 1468, in connect
+    super().connect()
+  File "/opt/conda/lib/python3.11/http/client.py", line 962, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/socket.py", line 863, in create_connection
+    raise exceptions[0]
+  File "/opt/conda/lib/python3.11/socket.py", line 848, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.11/site-packages/antismash/download_databases.py", line 133, in download_file
+    req = request.urlopen(url)  # pylint: disable=consider-using-with
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/urllib/request.py", line 1391, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/bin/download-antismash-databases", line 10, in <module>
+    sys.exit(_main())
+             ^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/antismash/download_databases.py", line 553, in _main
+    if not download(args):
+           ^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/antismash/download_databases.py", line 505, in download
+    download_pfam(
+  File "/opt/conda/lib/python3.11/site-packages/antismash/download_databases.py", line 285, in download_pfam
+    download_if_not_present(url, archive_filename, archive_checksum)
+  File "/opt/conda/lib/python3.11/site-packages/antismash/download_databases.py", line 234, in download_if_not_present
+    download_file(url, filename)
+  File "/opt/conda/lib/python3.11/site-packages/antismash/download_databases.py", line 135, in download_file
+    raise DownloadError("ERROR: File not found on server.\nPlease check your internet connection.")
+antismash.download_databases.DownloadError: ERROR: File not found on server.
+Please check your internet connection.
