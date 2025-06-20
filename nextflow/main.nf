@@ -1,23 +1,25 @@
 #!/usr/bin/env nextflow
 
+/* SCRIPT DESCRIPTION
+ *
+ * 
+ *
+ *
+ *
+ *
+ */
+
 nextflow.enable.dsl=2
 
 // MODULES
 include { FastANI } from './modules/FastANI/main.nf'
 
 // PARAMETERS
-params.genomes = 'data/assemblies.csv'
+params.genomes = '/mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/data/assemblies.csv'
 
+// WORKFLOW
 workflow {
 
-	genomes_ch = Channel.fromPath(params.genomes)
-						.splitCsv(header: false)
-						.map { row ->
-							def path = file(row[0])
-							def sample_id = path.baseName
-							tuple(sample_id, path)
-						}
-
-	FastANI(genomes_ch)
-
+	// FastANI All-vs-All Comparison
+	FastANI(tuple("all_vs_all", file(params.genomes), file(params.genomes)))
 }

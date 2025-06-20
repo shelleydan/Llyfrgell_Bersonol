@@ -1,0 +1,1 @@
+FATAL:   While checking container encryption: could not open image /mnt/scratch45/c2006576/singularity/cache/staphb-fastani.img: failed to retrieve path for /mnt/scratch45/c2006576/singularity/cache/staphb-fastani.img: lstat /mnt/scratch45/c2006576/singularity/cache/staphb-fastani.img: no such file or directory
