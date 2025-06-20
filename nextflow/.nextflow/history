@@ -1,0 +1,12 @@
+2025-06-19 15:59:37	-	distracted_legentil	-	795b29ef5b616dac1f47fb7911839a96	f4df7563-20ef-430c-af6e-3208eb70b259	nextflow run main.nf -profile singularity
+2025-06-19 15:59:57	-	tender_hypatia	-	795b29ef5b616dac1f47fb7911839a96	4d633001-4961-4103-a56a-93ccabc276f6	nextflow run main.nf -profile singularity
+2025-06-19 16:00:56	-	astonishing_newton	-	01b1ca5806108520bbf73232b01575f4	9a1e2000-7ed1-4e72-9dd7-d693bc0a1308	nextflow run main.nf -profile singularity
+2025-06-19 16:01:24	3.5s	distraught_morse	ERR	b963959ceb3f2885e70f4b138ad13ba2	1d8e63fa-332a-4d78-9b80-18b6754de830	nextflow run main.nf -profile singularity
+2025-06-19 16:03:38	4.1s	reverent_payne	ERR	b963959ceb3f2885e70f4b138ad13ba2	a289de9c-24d3-47e2-9593-43f44a27cac7	nextflow run main.nf -profile singularity
+2025-06-19 16:08:49	4.1s	distracted_fermi	ERR	b963959ceb3f2885e70f4b138ad13ba2	24884a98-aa0c-4348-bb62-b5b9b9693484	nextflow run main.nf
+2025-06-19 16:12:55	1m 41s	insane_ramanujan	ERR	b963959ceb3f2885e70f4b138ad13ba2	0431abcd-ea5b-4aeb-90e0-92977dfb9f32	nextflow run main.nf
+2025-06-19 16:21:54	6.7s	loving_monod	ERR	b963959ceb3f2885e70f4b138ad13ba2	0615373b-0e3b-4a88-8342-e97ac7b1c001	nextflow run main.nf
+2025-06-19 16:29:47	11.3s	awesome_brown	ERR	b963959ceb3f2885e70f4b138ad13ba2	94ee0b9e-9425-4ab0-85e4-a97dcb634607	nextflow run main.nf
+2025-06-19 16:32:31	-	nostalgic_bartik	-	b963959ceb3f2885e70f4b138ad13ba2	ded8502f-b8b0-41e2-911f-411e28cc2d54	nextflow run main.nf
+2025-06-19 16:32:50	6.8s	disturbed_bose	ERR	b963959ceb3f2885e70f4b138ad13ba2	ae3955b8-e372-4fc0-a380-0dd80f7f988d	nextflow run main.nf
+2025-06-19 16:38:08	7.1s	spontaneous_austin	ERR	b963959ceb3f2885e70f4b138ad13ba2	6213d4b6-56a2-46c7-832e-ea3bc65e46ad	nextflow run main.nf

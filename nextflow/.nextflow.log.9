@@ -1,0 +1,193 @@
+Jun-19 16:01:23.220 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile singularity
+Jun-19 16:01:23.327 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+Jun-19 16:01:23.350 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/trinity/home/c2006576/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+Jun-19 16:01:23.363 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-19 16:01:23.364 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-19 16:01:23.368 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jun-19 16:01:23.384 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-19 16:01:23.409 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/nextflow.config
+Jun-19 16:01:23.413 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/nextflow.config
+Jun-19 16:01:23.448 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /trinity/home/c2006576/.nextflow/secrets/store.json
+Jun-19 16:01:23.452 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@60f2e0bd] - activable => nextflow.secret.LocalSecretsProvider@60f2e0bd
+Jun-19 16:01:23.459 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jun-19 16:01:23.970 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [singularity]
+Jun-19 16:01:24.004 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jun-19 16:01:24.021 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [distraught_morse] DSL2 - revision: b963959ceb
+Jun-19 16:01:24.023 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-19 16:01:24.024 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-19 16:01:24.101 [main] DEBUG nextflow.Session - Session UUID: 1d8e63fa-332a-4d78-9b80-18b6754de830
+Jun-19 16:01:24.102 [main] DEBUG nextflow.Session - Run name: distraught_morse
+Jun-19 16:01:24.103 [main] DEBUG nextflow.Session - Executor pool size: 12
+Jun-19 16:01:24.114 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jun-19 16:01:24.121 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=36; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun-19 16:01:24.149 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC (08:05 BST)
+  System: Linux 4.18.0-553.8.1.el8_10.x86_64
+  Runtime: Groovy 4.0.21 on Java HotSpot(TM) 64-Bit Server VM 17.0.1+12-LTS-39
+  Encoding: UTF-8 (UTF-8)
+  Process: 1284459@iago.bios.cf.ac.uk [10.244.2.4]
+  CPUs: 12 - Mem: 23.2 GB (284.4 MB) - Swap: 7.9 GB (7.3 GB)
+Jun-19 16:01:24.179 [main] DEBUG nextflow.Session - Work-dir: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/work [nfs]
+Jun-19 16:01:24.180 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/bin
+Jun-19 16:01:24.191 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-19 16:01:24.203 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-19 16:01:24.233 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-19 16:01:24.244 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 13; maxThreads: 1000
+Jun-19 16:01:24.312 [main] DEBUG nextflow.Session - Session start
+Jun-19 16:01:24.574 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-19 16:01:24.944 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-19 16:01:24.944 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-19 16:01:24.957 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jun-19 16:01:24.964 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jun-19 16:01:24.966 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jun-19 16:01:24.970 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jun-19 16:01:25.038 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: antiSMASH
+Jun-19 16:01:25.038 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
+Jun-19 16:01:25.046 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > antiSMASH
+Jun-19 16:01:25.047 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_8ee27d4946920be3: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/./modules/antiSMASH/main.nf
+  Script_a955a8974b2ed722: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/main.nf
+Jun-19 16:01:25.047 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun-19 16:01:25.047 [main] DEBUG nextflow.Session - Session await
+Jun-19 16:01:25.179 [Actor Thread 10] WARN  nextflow.container.SingularityCache - Singularity cache directory has not been defined -- Remote image will be stored in the path: /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/work/singularity -- Use the environment variable NXF_SINGULARITY_CACHEDIR to specify a different location
+Jun-19 16:01:25.181 [Actor Thread 10] INFO  nextflow.container.SingularityCache - Pulling Singularity image docker://antismash/antismash:6 [cache /mnt/scratch45/c2006576/Llyfrgell_Bersonol/nextflow/work/singularity/antismash-antismash-6.img]
+Jun-19 16:01:27.281 [Actor Thread 8] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=antiSMASH (1); work-dir=null
+  error [java.lang.IllegalStateException]: java.lang.IllegalStateException: Failed to pull singularity image
+  command: singularity pull  --name antismash-antismash-6.img.pulling.1750345285181 docker://antismash/antismash:6 > /dev/null
+  status : 255
+  hint   : Try and increase singularity.pullTimeout in the config (current is "20m")
+  message:
+    FATAL:   While making image from oci registry: error fetching image to cache: failed to get checksum for docker://antismash/antismash:6: reading manifest 6 in docker.io/antismash/antismash: requested access to the resource is denied
+
+Jun-19 16:01:27.296 [Actor Thread 8] ERROR nextflow.processor.TaskProcessor - Error executing process > 'antiSMASH (1)'
+
+Caused by:
+  Failed to pull singularity image
+    command: singularity pull  --name antismash-antismash-6.img.pulling.1750345285181 docker://antismash/antismash:6 > /dev/null
+    status : 255
+    hint   : Try and increase singularity.pullTimeout in the config (current is "20m")
+    message:
+      FATAL:   While making image from oci registry: error fetching image to cache: failed to get checksum for docker://antismash/antismash:6: reading manifest 6 in docker.io/antismash/antismash: requested access to the resource is denied
+
+
+java.lang.IllegalStateException: java.lang.IllegalStateException: Failed to pull singularity image
+  command: singularity pull  --name antismash-antismash-6.img.pulling.1750345285181 docker://antismash/antismash:6 > /dev/null
+  status : 255
+  hint   : Try and increase singularity.pullTimeout in the config (current is "20m")
+  message:
+    FATAL:   While making image from oci registry: error fetching image to cache: failed to get checksum for docker://antismash/antismash:6: reading manifest 6 in docker.io/antismash/antismash: requested access to the resource is denied
+
+	at nextflow.container.SingularityCache.getCachePathFor(SingularityCache.groovy:356)
+	at nextflow.container.ContainerHandler.createSingularityCache(ContainerHandler.groovy:108)
+	at nextflow.container.ContainerHandler.normalizeImageName(ContainerHandler.groovy:75)
+	at nextflow.container.resolver.DefaultContainerResolver.resolveImage0(DefaultContainerResolver.groovy:49)
+	at nextflow.container.resolver.DefaultContainerResolver.resolveImage(DefaultContainerResolver.groovy:42)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.processor.TaskRun.containerInfo0(TaskRun.groovy:685)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.invokeMethodOnCurrentN(ScriptBytecodeAdapter.java:96)
+	at nextflow.processor.TaskRun.this$dist$invoke$1(TaskRun.groovy)
+	at nextflow.processor.TaskRun$4.methodMissing(TaskRun.groovy)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaClassImpl.invokeMissingMethod(MetaClassImpl.java:924)
+	at groovy.lang.MetaClassImpl.invokePropertyOrMissing(MetaClassImpl.java:1413)
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1335)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.processor.TaskRun$4.apply(TaskRun.groovy:670)
+	at nextflow.processor.TaskRun$4.apply(TaskRun.groovy)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1708)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.processor.TaskRun.containerInfo(TaskRun.groovy:667)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.processor.TaskRun.getContainer(TaskRun.groovy:693)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.processor.TaskRun.isContainerEnabled(TaskRun.groovy:738)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.processor.TaskProcessor.createTaskHashKey(TaskProcessor.groovy:2193)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.processor.TaskProcessor.invokeTask(TaskProcessor.groovy:659)
+	at nextflow.processor.InvokeTaskAdapter.call(InvokeTaskAdapter.groovy:52)
+	at groovyx.gpars.dataflow.operator.DataflowOperatorActor.startTask(DataflowOperatorActor.java:120)
+	at groovyx.gpars.dataflow.operator.ForkingDataflowOperatorActor.access$001(ForkingDataflowOperatorActor.java:35)
+	at groovyx.gpars.dataflow.operator.ForkingDataflowOperatorActor$1.run(ForkingDataflowOperatorActor.java:58)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.lang.IllegalStateException: Failed to pull singularity image
+  command: singularity pull  --name antismash-antismash-6.img.pulling.1750345285181 docker://antismash/antismash:6 > /dev/null
+  status : 255
+  hint   : Try and increase singularity.pullTimeout in the config (current is "20m")
+  message:
+    FATAL:   While making image from oci registry: error fetching image to cache: failed to get checksum for docker://antismash/antismash:6: reading manifest 6 in docker.io/antismash/antismash: requested access to the resource is denied
+
+	at nextflow.container.SingularityCache.runCommand(SingularityCache.groovy:308)
+	at nextflow.container.SingularityCache.downloadContainerImage0(SingularityCache.groovy:275)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:645)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:628)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethodSafe(InvokerHelper.java:82)
+	at nextflow.container.SingularityCache$_downloadContainerImage_closure1.doCall(SingularityCache.groovy:243)
+	at nextflow.container.SingularityCache$_downloadContainerImage_closure1.call(SingularityCache.groovy)
+	at nextflow.file.FileMutex.lock(FileMutex.groovy:106)
+	at nextflow.container.SingularityCache.downloadContainerImage(SingularityCache.groovy:243)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:645)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:628)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethodSafe(InvokerHelper.java:82)
+	at nextflow.container.SingularityCache$_getLazyImagePath_closure2.doCall(SingularityCache.groovy:333)
+	at nextflow.container.SingularityCache$_getLazyImagePath_closure2.call(SingularityCache.groovy)
+	at groovyx.gpars.dataflow.LazyDataflowVariable$1.run(LazyDataflowVariable.java:70)
+	... 3 common frames omitted
+Jun-19 16:01:27.304 [Actor Thread 8] DEBUG nextflow.Session - Session aborted -- Cause: java.lang.IllegalStateException: Failed to pull singularity image
+  command: singularity pull  --name antismash-antismash-6.img.pulling.1750345285181 docker://antismash/antismash:6 > /dev/null
+  status : 255
+  hint   : Try and increase singularity.pullTimeout in the config (current is "20m")
+  message:
+    FATAL:   While making image from oci registry: error fetching image to cache: failed to get checksum for docker://antismash/antismash:6: reading manifest 6 in docker.io/antismash/antismash: requested access to the resource is denied
+
+Jun-19 16:01:27.322 [Actor Thread 8] DEBUG nextflow.Session - The following nodes are still active:
+[process] antiSMASH
+  status=ACTIVE
+  port 0: (queue) closed; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+Jun-19 16:01:27.325 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun-19 16:01:27.325 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jun-19 16:01:27.326 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun-19 16:01:27.327 [Actor Thread 6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=antiSMASH; work-dir=null
+  error [java.lang.InterruptedException]: java.lang.InterruptedException
+Jun-19 16:01:27.331 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Jun-19 16:01:27.519 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun-19 16:01:27.536 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
