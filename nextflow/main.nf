@@ -3,12 +3,10 @@
 nextflow.enable.dsl=2
 
 // MODULES
-include { antiSMASH_PREP } from './modules/antiSMASH_PREP'
-include { antiSMASH } from './modules/antiSMASH'
+include { FastANI } from './modules/FastANI/main.nf'
 
-// Paramaters
+// PARAMETERS
 params.genomes = 'data/assemblies.csv'
-
 
 workflow {
 
@@ -20,10 +18,6 @@ workflow {
 							tuple(sample_id, path)
 						}
 
-		// Preparing the antiSmash Environment
-		antiSMASH_PREP()
-
-		// antiSMASH Process
-		//antiSMASH(genomes_ch)
+	FastANI(genomes_ch)
 
 }
