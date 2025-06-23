@@ -1,0 +1,27 @@
+#!/usr/bin/env nextflow
+
+params.kraken2db = '/mnt/scratch15/nodelete/smbpk/kraken_db/kraken_standard'
+
+process kraken2 {
+
+	publishDir 'results/kraken2', mode: 'copy'
+
+	container ''
+
+	input:
+	tuple   val(sample_id),
+		path(forward),
+		path(reverse)
+
+	output:
+	path "${sample_id}".tsv
+
+	script:
+	"""
+	kraken2 --output "${sample_id}".tsv \
+		--db ${params.kraken2db} \
+		--paired \
+		${forward} ${reverse}
+	"""
+
+}
