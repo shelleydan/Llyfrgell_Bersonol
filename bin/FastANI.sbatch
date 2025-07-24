@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#SBATCH --partition=defq       # the requested queue
+#SBATCH --partition=epyc       # the requested queue
 #SBATCH --nodes=1              # number of nodes to use
 #SBATCH --tasks-per-node=1     #
-#SBATCH --cpus-per-task=16      #
-#SBATCH --mem-per-cpu=10000     # in megabytes, unless unit explicitly stated
+#SBATCH --cpus-per-task=8      #
+#SBATCH --mem-per-cpu=2000     # in megabytes, unless unit explicitly stated
 #SBATCH --error=ANI-%J.err         # redirect stderr to this file
 #SBATCH --output=ANI-%J.out        # redirect stdout to this file
 #SBATCH --mail-user=shelleydr@Cardiff.ac.uk  # email address used for event notification
@@ -26,13 +26,13 @@ echo \$SLURM_MEM_PER_CPU=${SLURM_MEM_PER_CPU}
 
 workdir=$(pwd)                                                              # Assign Working directory
 rawdir=${workdir}/input/rawdata                                             # Assign Rawdata directory
-genomedir=${workdir}/output/ORBICOLA/ORBICOLA-removed-redundant
+genomedir=${workdir}/output/DereplicatedAssemblies
 
 FILE=${workdir}/.FastANI                                                    # Assign FastANI Direcotyr
 
 ## Making Output Directory
 mkdir ${workdir}/output/FastANI                                             # Making a FastANI Output
-mkdir ${workdir}/output/FastANI/OrbicolaPanANI                                 # Making a FastANI output for individual results
+mkdir ${workdir}/output/FastANI/FastRef                                 # Making a FastANI output for individual results
 #mkdir ${workdir}/output/FastANIs
 fastanidir=${workdir}/output/FastANI                                        # Assign the FastANI Dir variable. 
 mkdir ${workdir}/input/reference
@@ -94,17 +94,17 @@ echo ${f}
 ./fastANI \
 	-q ${f} \
 	--rl ${workdir}/burkholderia-reference/refs.csv \
-	-o ${fastanidir}/OrbicolaPanANI/${base}.tsv \
+	-o ${fastanidir}/FastRef/${base}.tsv \
 	--threads ${SLURM_CPUS_PER_TASK}
 done
 
 # ~~~~~~~~~~ Concatonate Output Files ~~~~~~~~~~
 
-touch ${fastanidir}/OrbicolaPanANI.tsv
+touch ${fastanidir}/FastRef/PanANI.tsv
 
-printf "QUERY-GENOME\tREF-GENOME\tANI-PERCENTAGE\tMATCHING-FRAGS\tTOTAL-FRAGS\n" > ${fastanidir}/OrbicolaPanANI.tsv
+printf "QUERY-GENOME\tREF-GENOME\tANI-PERCENTAGE\tMATCHING-FRAGS\tTOTAL-FRAGS\n" > ${fastanidir}/FastRef/PanANI.tsv
 
-cat ${fastanidir}/OrbicolaPanANI/*.tsv >> ${fastanidir}/OrbicolaPanANI.tsv
+cat ${fastanidir}/FastRef/*.tsv >> ${fastanidir}/FastRef/PanANI.tsv
 
 awk -F'\t' '{
     file1=gensub(/\.fasta$/, "", "g", basename($1));
@@ -117,13 +117,13 @@ awk -F'\t' '{
 function basename(path) {
     n = split(path, parts, "/");
     return parts[n];
-}' ${fastanidir}/OrbicolaPanANI.tsv > ${fastanidir}/OrbicolaPanANI-Ordered.tsv
+}' ${fastanidir}/FastRef/PanANI.tsv > ${fastanidir}/FastRef/PanANI-Ordered.tsv
 
 # ~~~~~~~~~~ Reformating Output File ~~~~~~~~~~
 
 # Input and output file names
-INPUT_FILE="${fastanidir}/OrbicolaPanANI-Ordered.tsv"
-OUTPUT_FILE="${fastanidir}/Reformatted_OrbicolaPanANI_Ordered.tsv"
+INPUT_FILE="${fastanidir}/FastRef/PanANI-Ordered.tsv"
+OUTPUT_FILE="${fastanidir}/FastRef/Reformatted_PanANI_Ordered.tsv"
 
 # Check if input file is provided
 if [ -z "$INPUT_FILE" ]; then

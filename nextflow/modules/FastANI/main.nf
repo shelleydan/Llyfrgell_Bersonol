@@ -2,6 +2,9 @@
 
 process FastANI {
 
+    cpus 8
+    memory '8 GB'
+
     publishDir 'results/FastANI', mode: 'copy'
 
     container 'docker://staphb/fastani'
@@ -18,6 +21,7 @@ process FastANI {
     """
     fastANI --ql queries.txt \
 	    --rl references.txt \
-	     -o ${sample_id}.tsv
+	     -o ${sample_id}.tsv \
+	    --threads ${task.cpus}
     """
 }

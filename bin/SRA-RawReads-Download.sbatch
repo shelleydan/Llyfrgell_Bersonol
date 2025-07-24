@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name=SRA-RawRead-Download
-#SBATCH --partition=defq       # the requested queue
+#SBATCH --partition=epyc       # the requested queue
 #SBATCH --nodes=1              # number of nodes to use
 #SBATCH --tasks-per-node=1     #
 #SBATCH --cpus-per-task=4      #
@@ -36,7 +36,7 @@ done
 
 # ~~~~~~~~~~ User Variables ~~~~~~~~~~
 
-ASSENSIONCSV="orbi-accession.csv"
+ASSENSIONCSV="accession.csv"
 
 # ~~~~~~~~~~ Variables ~~~~~~~~~~
 workdir=$(pwd)
@@ -45,7 +45,7 @@ FILE=${workdir}/.SRA-Genome-Download                                       # Ass
 
 ## Making Output Directory
 mkdir ${workdir}/input/rawdata                                        # Making a FastANI Output
-RAWREADS=${workdir}/input/rawdata-ceno                                          # Assign the FastANI Dir variable.
+RAWREADS=${workdir}/input/rawdata                                          # Assign the FastANI Dir variable.
 
 # ~~~~~~~~~~ NCBI Genome Tool  Download ~~~~~~~~~~
 
@@ -80,7 +80,7 @@ RAWREADS=${workdir}/input/rawdata-ceno                                          
 
 # ~~~~~~~~~~ Genome Downloading from Assension ~~~~~~~~~~
 
-SRA_BIN=/mnt/scratch/c2006576/burkholderia2025/.SRA-Genome-Download/sratoolkit.3.2.1-alma_linux64/bin
+SRA_BIN=/mnt/scratch45/c2006576/burkholderia2025/.SRA-Genome-Download/sratoolkit.3.2.1-alma_linux64/bin
 
 cd ${SRA_BIN}
 
