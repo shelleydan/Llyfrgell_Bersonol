@@ -1,0 +1,56 @@
+### Building Personalised Modules on HPCs, 
+
+# For this example, the python tool Ardal (Developed by Dr. Arthur Morris at Cardiff University) will be used. 
+
+# Enter an Interactive Job
+
+srun -c 8 --mem=8G --partition=epyc --pty -- bash
+
+# Create a Directory to store the module / GitHub install
+
+mkdir /mnt/scratch45/${USER}/modules/Ardal
+
+cd /mnt/scratch45/${USER}/modules/Ardal
+
+# Load Python Module (Do not use the latest and try and match the tools requirements)
+
+module load python/3.10.5
+
+# Start a virtual environment
+
+python -m venv Ardal_env
+
+# Remove the Python Module
+
+module purge
+
+# Activate the Virtual Environment and install the tool
+
+source Ardal_env/bin/activate
+
+git clone https://github.com/ArthurVM/Ardal.git
+
+cd ardal
+
+pip install .
+
+#NB: The tool may fail to install if certain Python modules aren't installed, if not use:
+
+pip install [tool name]
+
+# Test that the tool is installed correctly
+
+ardal -h 
+
+# Deactivate the environment - should be all ready to use.
+
+deactivate
+
+# Exit the interactive job
+
+exit
+
+
+# When we come to use this tool in a SLURM script, we can use the follow as if we we're running any other module:
+
+source /mnt/scratch45/${USER}/modules/Ardal/Ardal_env/bin/activate
