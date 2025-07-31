@@ -42,12 +42,13 @@ cat $0
 #~~~~~~~~~~~ START OF SCRIPT ~~~~~~~~~~~~#
 
 #~~~~~ VARIABLES ~~~~~~#
-source
 
 WORKDIR=$(pwd)
 DIR_READS=/mnt/scratch45/c2006576/burkholderia2025/CHP1_COLLECTION/output/trimdata
-OUTDIR_SNP=${WORKDIR}/output/snps
-REFERENCE=/mnt/scratch45/c2006576/burkholderia2025/burkholderia-reference/Burkholderia_cenocepacia_J2315_GCA_000009485.1_ASM948v1_genomic.fna
+OUTDIR_SNP=${WORKDIR}/output/core_snps
+REFERENCE=/mnt/scratch45/c2006576/burkholderia2025/CHP2_GWAS/output/core_genes/core_gene_alignment.aln
+
+#/mnt/scratch45/c2006576/burkholderia2025/burkholderia-reference/Burkholderia_cenocepacia_J2315_GCA_000009485.1_ASM948v1_genomic.fna
 FOFN=/mnt/scratch45/c2006576/burkholderia2025/CHP1_COLLECTION/data/assemblies.csv
 
 #~~~~~ NEW DIRECTORIES ~~~~~#
@@ -88,12 +89,12 @@ snp-sites \
 
 module load ${MODULE_RAXML}
 
-raxml-ng-mpi \
+raxml-ng \
         --all --msa ${OUTDIR_SNP}/aln_bacterial_snp \
         --model GTR \
         --bs-tree 1000 \
         --prefix ${OUTDIR_SNP}/snp_tree \
-        --threads 8
+        --threads ${SLURM_CPUS_PER_TASK}
 
 module purge
 

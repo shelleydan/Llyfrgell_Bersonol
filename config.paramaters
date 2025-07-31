@@ -1,0 +1,63 @@
+
+# This config.paramaters files provides variables which allow the easy use of scripts stored in git@github.com:shelleydan/Llyfrgell_Bersonol.git.
+# This config.paramaters and scripts found in git@github.com:shelleydan/Llyfrgell_Bersonol.git are self-curated by Dan Shelley @ Cardiff University. 
+# This assortment of scripts aid in the investigation of bacterial and bacteriophage genomes. 
+
+
+################# DIRECTORIES ##################
+DIRECTORY_WORK==$(realpath .)									# Work directory with realpath to prevent issues with symlinks.
+DIRECTORY_OUTPUT=${DIRECTORY_WORK}/output							# Generic output directory, sub-outputs will be script generated.
+
+################# INPUT FILES ##################
+FOFN_INPUT="/mnt/scratch45/c2006576/burkholderia2025/CHP1_COLLECTION/data/assemblies.csv"	# File of file names, all scripts will work based off this input.
+
+############## CONTAINER SETTINGS ##############
+SINGULARITY_CACHEDIR="/mnt/scratch45/${USER}/singularity/cache/"				# Singularity cache export path.
+APPTAINER_CACHEDIR="/mnt/scratch45/${USER}/singularity/cache/"					# Apptainer cache export path.
+TMPDIR="/mnt/scratch45/${USER}/singularity/cache/"						# TMP Directory path. 
+SINGIMGDIR="/mnt/scratch45/${USER}/singularity/cache"						# Directory to save installed images in Singularity Image Format (sif).
+
+################### MODULES ####################						# Modules available (Iago HPC based @ Cardiff University).
+MODULE_ABRICATE="abricate/1.0.0-cucvu4c"							# ABRicate annotation module.
+MODULE_PROKKA="prokka/1.14.6-4f3ubpu"								# Prokka Annotation module.
+MODULE_SNIPPY="snippy/v4.6.0"									# SNP analysis module.
+MODULE_SNPSITES="snp-sites/2.5.1"								# SNP alignment module.
+MODULE_RAXML="RAxML-NG/v1.2.0"									# Phylogenetic tree module.
+MODULE_PYTHON="python/3.11.6-63oqiza"								# Python module.
+MODULE_PANAROO="py-panaroo/1.2.10-b2ksfph"							# Core genome alignment module.
+
+############### CONTAINER IMAGES ###############
+
+# ~~~~~~~~~~ antiSMASH ~~~~~~~~~~ #								# AntiSMASH; Investigating Biosynthetic Gene Clusters.
+IMAGE_ANTISMASH="antismash/standalone:8.0.2"
+SIF_ANTISMASH="antiSMASH.sif"
+
+# ~~~~~~~~~~~ geNomad ~~~~~~~~~~~ #								# geNomad; Identification of prophages in bacterial genomes.
+IMAGE_GENOMAD="staphb/genomad"
+SIF_GENOMAD="geNomad.sif"
+
+# ~~~~~~~~~~~ CheckV ~~~~~~~~~~~~ #								# CheckV; Assess the quality of identified prophage sequences.
+IMAGE_CHECKV="staphb/check"
+SIF_CHECKV="checkV.sif"
+
+# ~~~~~~~~~~~ CheckM ~~~~~~~~~~~~ #								# CheckM; Assess the quality of bacterial genome assemblies.
+IMAGE_CHECKM="staphb/checkm2"
+SIF_CHECKM="checkM.sif"
+
+# ~~~~~~~~~~~~~ mlst ~~~~~~~~~~~~ #								# MLST; Assign multi-locus sequence typing techniques.
+IMAGE_MLST="staphb/mlst"
+SIF_MLST="mlst.sif
+
+# ~~~~~~~~~~~~ Quast ~~~~~~~~~~~~ #								# Quast; Assess the quality of bacterial genome assemblies.
+IMAGE_QUAST="staphb/quast"
+SIF_QUAST="quast.sif"
+
+############### TOOL DOWNLOADS ################	
+
+# ~~~~~~~~~~~ InterPro ~~~~~~~~~~ #								# InterPro; Investigate the function of proteins predicted in bacterial genomes.
+URL_INTERPRO="https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.75-106.0/interproscan-5.75-106.0-64-bit.tar.gz"
+
+# ~~~~~~~~~~~ FastANI ~~~~~~~~~~~ #								# FastANI; Assign an Average Nucleotide Identity score, in a pairwise or reference manner. 
+GITHUB_FASTANI="https://github.com/ParBLiSS/FastANI/archive/master.zip"
+
+
