@@ -3,8 +3,8 @@
 #SBATCH --job-name=InterPro                        # name of job
 #SBATCH --nodes=1                              # number of nodes to use
 #SBATCH --tasks-per-node=1                     #
-#SBATCH --cpus-per-task=8                      #
-#SBATCH --mem=2G                               # in megabytes, unless unit explicitly stated
+#SBATCH --cpus-per-task=16                      #
+#SBATCH --mem=4000                               # in megabytes, unless unit explicitly stated
 #SBATCH --error=interPro-%J.err                   # redirect stderr to this file
 #SBATCH --output=interPro-%J.out                  # redirect stdout to this file
 
@@ -16,6 +16,7 @@
 WORKDIR="/mnt/scratch45/c2006576/burkholderia2025"
 CONTWORKDIR=${WORKDIR}
 MODULE_PYTHON="python/3.10"
+MODULE_JAVA="java/17.0.1"
 # ~~~~~~~~~~ NEW DIRECTORY ~~~~~~~~~~
 
 mkdir ${WORKDIR}/CHP2_GWAS/output/interPro
@@ -38,9 +39,9 @@ if [ -d "${DATABASE_INTERPRO}/${URL_EXTRACTED_BASE}" ]; then
     echo "Note: Database Exists - Skipping Download."
 else
     echo "WARNING: Database Not Found - downloading..."
-    #wget ${URL_INTERPRO} -O ${DATABASE_INTERPRO}/${URL_BASE}
+    wget ${URL_INTERPRO} -O ${DATABASE_INTERPRO}/${URL_BASE}
 
-    #tar -pxzf ${DATABASE_INTERPRO}/${URL_BASE} -C ${DATABASE_INTERPRO}
+    tar -pxzf ${DATABASE_INTERPRO}/${URL_BASE} -C ${DATABASE_INTERPRO}
 
     cd ${DATABASE_INTERPRO}/${URL_EXTRACTED_BASE}
 
@@ -55,7 +56,7 @@ else
 fi
 
 module load ${MODULE_PYTHON}
-module load java/17.0.1
+module load ${MODULE_JAVA}
 
 cd ${DATABASE_INTERPRO}/${URL_EXTRACTED_BASE}
 
@@ -64,6 +65,8 @@ while IFS= read -r FOFN_FILE; do
         BASE=$(basename $FOFN_FILE .fasta)
 
         echo "Now investigating ${BASE}..."
+
+	mkdir ${DIRECTORY_INTERPRO}/${BASE}
 
 	./interproscan.sh \
 		--input ${FOFN_FILE} \

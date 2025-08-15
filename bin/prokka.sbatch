@@ -3,8 +3,8 @@
 #~~~~~~~~~~ JOB IDENTIFICATION ~~~~~~~~~~# 
 
 #SBATCH --job-name=PROKKA_ANNOTATION             # Assing a job name.
-#SBATCH --output=%J-PROKKA.out    # Redirect stdout to this file
-#SBATCH --error=%J-PROKKA.err      # Redirect stderr to this file
+#SBATCH --output=PROKKA-%J.out    # Redirect stdout to this file
+#SBATCH --error=PROKKA-%J.err      # Redirect stderr to this file
 
 #~~~~~~~~~~ ASSIGNED RESOURCES ~~~~~~~~~~#
 
@@ -55,6 +55,7 @@ while IFS= read -r file; do
 	prokka --Kingdom Bacteria  \
         	--outdir ${annotdir}/${base}  \
         	--prefix ${base} \
+		--force \
 		--dbdir /mnt/scratch15/nodelete/apps/zen/spack/opt/spack/linux-rocky8-zen/gcc-8.5.0/prokka-1.14.6-eozpe5lnaz2xrvhw53wpdokqski4dvi2/db \
 		"${file}"
 

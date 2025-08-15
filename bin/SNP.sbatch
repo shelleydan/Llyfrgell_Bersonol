@@ -3,15 +3,15 @@
 #~~~~~~~~~~ JOB IDENTIFICATION ~~~~~~~~~~#
 
 #SBATCH --job-name=SNP                    # Assing a job name.
-#SBATCH --output=%J-SNP.out               # Redirect stdout to this file
-#SBATCH --error=%J-SNP.err                # Redirect stderr to this file
+#SBATCH --output=SNP-%J.out               # Redirect stdout to this file
+#SBATCH --error=SNP-%J.err                # Redirect stderr to this file
 
 #~~~~~~~~~~ ASSIGNED RESOURCES ~~~~~~~~~~#
 
-#SBATCH --partition=epyc                          # The requested queue partition (e.g defq)
+#SBATCH --partition=epyc_ssd                      # The requested queue partition (e.g defq)
 #SBATCH --nodes=1                                 # Number of nodes to use
 #SBATCH --tasks-per-node=1                        # Number of tasks per node.
-#SBATCH --cpus-per-task=8                         # CPUs per task.
+#SBATCH --cpus-per-task=64                        # CPUs per task.
 #SBATCH --mem-per-cpu=4000                        # In megabytes, unless unit explicitly stated
 
 #~~~~~~~~~~ JOB  NOTIFICATIONS ~~~~~~~~~~#
@@ -43,13 +43,13 @@ cat $0
 
 #~~~~~ VARIABLES ~~~~~~#
 
-WORKDIR=$(pwd)
-DIR_READS=/mnt/scratch45/c2006576/burkholderia2025/CHP1_COLLECTION/output/trimdata
-OUTDIR_SNP=${WORKDIR}/output/core_snps
-REFERENCE=/mnt/scratch45/c2006576/burkholderia2025/CHP2_GWAS/output/core_genes/core_gene_alignment.aln
+WORKDIR="/tmp/c2006576"
+DIR_READS="${WORKDIR}/rawdata"
+OUTDIR_SNP="${WORKDIR}/output/core_snps"
+REFERENCE="${WORKDIR}/core_gene_alignment.aln"
 
 #/mnt/scratch45/c2006576/burkholderia2025/burkholderia-reference/Burkholderia_cenocepacia_J2315_GCA_000009485.1_ASM948v1_genomic.fna
-FOFN=/mnt/scratch45/c2006576/burkholderia2025/CHP1_COLLECTION/data/assemblies.csv
+#FOFN=/mnt/scratch45/c2006576/burkholderia2025/CHP1_COLLECTION/data/assemblies.csv
 
 #~~~~~ NEW DIRECTORIES ~~~~~#
 mkdir ${OUTDIR_SNP}
@@ -64,7 +64,8 @@ module load ${MODULE_PYTHON}
 
 #~~~~~ SCRIPT ~~~~~#
 
-while IFS= read -r f;
+#while IFS= read -r f;
+for f in ${WORKDIR}/genomes/*
         do
         base=$(basename "${f}" .fasta)
         echo ${base}
@@ -74,9 +75,13 @@ snippy  -outdir ${OUTDIR_SNP}/${base} \
         -ref ${REFERENCE} \
         -R1 ${DIR_READS}/${base}*_R1.fastq.gz \
         -R2 ${DIR_READS}/${base}*_R2.fastq.gz \
-        --prefix ${base} --force
+        --prefix ${base} --ram 64 --cpus ${SLURM_CPUS_PER_TASK} 
 
-done < "${FOFN}"
+#--force
+
+done
+
+# < "${FOFN}"
 
 snippy-core \
         -ref ${REFERENCE} \
@@ -92,7 +97,7 @@ module load ${MODULE_RAXML}
 raxml-ng \
         --all --msa ${OUTDIR_SNP}/aln_bacterial_snp \
         --model GTR \
-        --bs-tree 1000 \
+        --bs-tree 100 \
         --prefix ${OUTDIR_SNP}/snp_tree \
         --threads ${SLURM_CPUS_PER_TASK}
 

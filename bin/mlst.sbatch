@@ -58,6 +58,10 @@ echo \${FILES[@]}
 
 # Running MLST twice, with and without a legacy option:
 
+mlst --version
+
+mlst --help
+
 mlst --legacy \${FILES[@]} > "${CONTWORKDIR}/CHP2_GWAS/output/mlst/mlst_${SLURM_JOB_ID}.tsv"
 
 mlst --legacy --scheme bcc \${FILES[@]} > "${CONTWORKDIR}/CHP2_GWAS/output/mlst/mlst_scheme_${SLURM_JOB_ID}.tsv"

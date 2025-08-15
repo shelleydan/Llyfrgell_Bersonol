@@ -4,7 +4,7 @@
 #SBATCH --nodes=1                              # number of nodes to use
 #SBATCH --tasks-per-node=1                     #
 #SBATCH --cpus-per-task=8                      #
-#SBATCH --mem=8G                               # in megabytes, unless unit explicitly stated
+#SBATCH --mem=2G                               # in megabytes, unless unit explicitly stated
 #SBATCH --error=genomad-%J.err                   # redirect stderr to this file
 #SBATCH --output=genomad-%J.out                  # redirect stdout to this file
 
@@ -64,19 +64,62 @@ else
 fi
 
 
-while IFS= read -r FILE; do
+#while IFS= read -r FILE; do
 
-        BASE=\$(basename \$FILE .fasta)
+#        BASE=\$(basename \$FILE .fasta)
 
-        echo "Now investigating \${BASE}..."
+#        echo "Now investigating \${BASE}..."
 
-	mkdir \${DIR_OUTPUT}/\${BASE}
+#	mkdir \${DIR_OUTPUT}/\${BASE}
 
-	genomad end-to-end --cleanup \${FILE} \${DIR_OUTPUT}/\${BASE} \${DIR_geNomad_DB}
+#	genomad end-to-end --cleanup \${FILE} \${DIR_OUTPUT}/\${BASE} \${DIR_geNomad_DB}
 
-done < "\${FOFN}"
+#done < "\${FOFN}"
+
+for PROVIRUS_FNA in \${DIR_OUTPUT}/*/*_find_proviruses/*_provirus.fna; do
+
+	echo \${PROVIRUS_FNA}
+
+	basename=\$(basename "\${PROVIRUS_FNA}" _provirus.fna)
+
+	sed "s|^>|>\${basename}_|" "\${PROVIRUS_FNA}" > "\${DIR_OUTPUT}/\${basename}/\${basename}_find_proviruses/\${basename}_renamed_provirus.fna"
+
+done 
 
 
+#for PROVIRUS_SUMMARY in \${DIR_OUTPUT}/*/*_summary/*_virus_summary.tsv; do
+
+#        basename=\$(basename "\${PROVIRUS_SUMMARY}" _virus_summary.tsv)
+
+#        awk -v b="\$basename" 'NR==1 {print "Sample\t"$0; next} {print b"\t"$0}' "\${PROVIRUS_SUMMARY}" > "\${PROVIRUS_SUMMARY}.tmp" && mv "\${PROVIRUS_SUMMARY}.tmp" "\${PROVIRUS_SUMMARY}"
+
+#done
+
+
+#first=1
+#for file in \${DIR_OUTPUT}/*/*_summary/*_virus_summary.tsv; do
+
+#    if [ \${first} -eq 1 ]; then
+
+#        cat "\${file}" > "\${DIR_OUTPUT}/prophage_summary.tsv"    
+
+#        first=0
+
+#    else
+
+#        tail -n +2 "\${file}" >> "\${DIR_OUTPUT}/prophage_summary.tsv" 
+
+#    fi
+
+#done
+
+
+
+
+
+
+
+#>> \${DIR_OUTPUT}/prophage_summary.tsv
 
 EOF
 

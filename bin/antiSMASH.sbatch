@@ -86,18 +86,7 @@ while IFS= read -r FILE; do
 		-t bacteria \
 		-c \${SLURM_CPUS_PER_TASK} \
 		--genefinding-tool prodigal \
-		--fullhmmer \
-		--clusterhmmer \
-		--tigrfam \
-		--asf \
-		--cc-mibig \
-  		--cb-general \
-		--cb-knownclusters \
-		--cb-subclusters \
-  		--pfam2go \
-		--smcog-trees \
-		--html-start-compact \
-		--html-ncbi-context \
+		--minimal \
 		--output-dir \${DIR_ANTISMASH}/\${BASE} \
 		--output-basename \${BASE} \
 		\${FILE}
