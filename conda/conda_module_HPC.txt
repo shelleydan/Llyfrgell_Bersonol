@@ -1,0 +1,38 @@
+# Create interactive job
+srun -c 8 --mem=8G --partition=epyc --pty -- bash
+
+# change to nodelete folder if you want it longer than scratch auto-delete
+cd /mnt/scratch15/nodelete/$USER/
+
+# create folder to store conda_environment
+mkdir miniforge
+cd miniforge
+
+# download miniforge (conda/mamba combined)
+curl -LO https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+
+# install miniforge to a base environment
+bash Miniforge3-Linux-x86_64.sh -b -p miniforge_env
+# remove installer as no longer required
+rm -f Miniforge3-Linux-x86_64.sh
+
+# activate miniforge environment (prompt should change to base)
+source miniforge_env/bin/activate
+
+# clone software you require
+git clone --recursive https://github.com/microbial-pangenomes-lab/microGWAS.git microGWAS
+cd microGWAS
+
+## officially you should comment out the defaults channel in environment as not open source
+#  - defaults
+# but this may stop certain installs from working (although not supposed to be required)
+
+# create environment using environment file, -n is the name you want to call it
+mamba env create -y -n microGWAS_conda -f environment.yml
+
+# source new environment
+source /mnt/scratch15/nodelete/$USER/miniforge/miniforge_env/bin/activate microGWAS_conda
+
+# or can also use
+. /mnt/scratch15/nodelete/$USER/miniforge/miniforge_env/bin/activate microGWAS_conda
+
