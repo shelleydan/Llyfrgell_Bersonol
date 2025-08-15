@@ -5,10 +5,14 @@
 
 
 ################# DIRECTORIES ##################
-DIRECTORY_WORK==$(realpath .)									# Work directory with realpath to prevent issues with symlinks.
+DIRECTORY_WORK="/mnt/scratch45/c2006576/burkholderia2025"
+#$(realpath .)									# Work directory with realpath to prevent issues with symlinks.
 DIRECTORY_OUTPUT=${DIRECTORY_WORK}/output							# Generic output directory, sub-outputs will be script generated.
+DIR_CORE_GENOME=${DIRECTORY_WORK}/output/core_genes
+DIRECTORY_ANNOTATION="${DIRECTORY_WORK}/CHP2_GWAS/output/annotation"
 
 ################# INPUT FILES ##################
+
 FOFN_INPUT="/mnt/scratch45/c2006576/burkholderia2025/CHP1_COLLECTION/data/assemblies.csv"	# File of file names, all scripts will work based off this input.
 
 ############## CONTAINER SETTINGS ##############
@@ -46,11 +50,15 @@ SIF_CHECKM="checkM.sif"
 
 # ~~~~~~~~~~~~~ mlst ~~~~~~~~~~~~ #								# MLST; Assign multi-locus sequence typing techniques.
 IMAGE_MLST="staphb/mlst"
-SIF_MLST="mlst.sif
+SIF_MLST="mlst.sif"
 
 # ~~~~~~~~~~~~ Quast ~~~~~~~~~~~~ #								# Quast; Assess the quality of bacterial genome assemblies.
 IMAGE_QUAST="staphb/quast"
 SIF_QUAST="quast.sif"
+
+# ~~~~~~~~~~~~ Bakta ~~~~~~~~~~~~ #
+CONDA_BAKTA="/mnt/scratch15/nodelete/c2006576/miniforge/miniforge_env/bin/activate bakta_env"
+DATABASE_BAKTA=".bakta_db"
 
 ############### TOOL DOWNLOADS ################	
 
