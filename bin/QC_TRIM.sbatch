@@ -23,9 +23,9 @@ echo \$SLURM_JOB_CPUS_PER_NODE=${SLURM_JOB_CPUS_PER_NODE}
 echo \$SLURM_MEM_PER_CPU=${SLURM_MEM_PER_CPU}
 
 #Defining variables
-workdir=$(pwd) #Script can be run from any file as this always updates
-rawdir=/mnt/scratch45/c2006576/burkholderia2025/CHP1_COLLECTION/metagenomic_slurm/raw_data
-mkdir ${workdir}/output/rawqc
+workdir=$(realpath .) #Script can be run from any file as this always updates
+rawdir=${workdir}/input/rawdata/PAIRED
+mkdir ${workdir}/output/rawqc -p
 rawqcdir=${workdir}/output/rawqc
 mkdir ${workdir}/output/trimdata
 trimdir=${workdir}/output/trimdata
@@ -35,29 +35,32 @@ mkdir ${workdir}/output/multiqc
 multiqcdir=${workdir}/output/multiqc
 
 
+FASTP="fastp/0.23.4-mr6qifo"
+FASTQC="fastqc/0.12.1-luqvhcm"
+
 #Creating a list of file names
 
 #FastQC
-module load fastqc/0.12.1-luqvhcm
+#module load ${FASTQC}
 
-for f in ${rawdir}/*_1.fastq.gz #Listing all files in the rawdata directory
-do
-R1=$(basename $f | cut -f1 -d.) #divide by the '.' and take the first coloum
-base=$(echo $R1 | sed 's/_1//') #Removes the '_R1_ e..g virus_1, virus_2 etc
+#for f in ${rawdir}/*_1.fastq* #Listing all files in the rawdata directory
+#do
+#R1=$(basename $f | cut -f1 -d.) #divide by the '.' and take the first coloum
+#base=$(echo $R1 | sed 's/_1//') #Removes the '_R1_ e..g virus_1, virus_2 etc
 
-fastqc -q -t 2 ${rawdir}/${base}_1.fastq* \
-         ${rawdir}/${base}_2.fastq* \
-         -o ${rawqcdir}
-done
+#fastqc -q -t 2 ${rawdir}/${base}_1.fastq* \
+#         ${rawdir}/${base}_2.fastq* \
+#         -o ${rawqcdir}
+#done
 #Unloading the QC module
-module unload fastqc/
+#module unload fastqc/
 
 #End of FastQC
 ################
 #Start of FastP
-module load fastp/0.23.4-mr6qifo
+module load ${FASTP}
 
-for f in ${rawdir}/*_1.fastq.gz
+for f in ${rawdir}/*_1.fastq*
 do
 R1=$(basename $f | cut -f1 -d.)
 base=$(echo $R1 | sed 's/_1//')
@@ -75,9 +78,9 @@ module unload fastp/
 #################
 #Rerunning the FastQC
 
-module load fastqc/0.12.1-luqvhcm
+module load ${FASTQC}
 
-for f in ${rawdir}/*_1.fastq.gz
+for f in ${rawdir}/*_1.fastq*
 do
 R1=$(basename $f | cut -f1 -d.)
 base=$(echo $R1 | sed 's/_1//')

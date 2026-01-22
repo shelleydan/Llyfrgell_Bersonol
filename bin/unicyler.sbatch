@@ -35,26 +35,29 @@ echo "\$SLURM_MEM_PER_CPU=${SLURM_MEM_PER_CPU}"
 # Write jobscript to output file (good for reproducibility)
 cat $0
 
+source config.parameters
+
 # ~~~~~ VARIABLES ~~~~~ #
-DIR_READS=
-DIR_OUT_ASSEMBLY=
-MODULE_UNICYCLER=""
+DIR_READS="${DIRECTORY_WORK}/output/trimdata"
+DIR_OUT_ASSEMBLY="${DIRECTORY_WORK}/output/assemblies"
 
 # ~~~~~ SCRIPT ~~~~~ # 
 
 module load ${MODULE_UNICYCLER}					# Loads the Unicycler module
 
-for file in ${DIR_READS}/*_1.fasta				# Starts the loop for all files in the given directory
+for file in ${DIR_READS}/*_trim_*1.fastq.gz				# Starts the loop for all files in the given directory
 	do
 
 	R1=$(basename $file | cut -f1 -d.)			# Extracts the name before the .
-	base=$(echo $R1 | sed 's/_trim_1$//')			# Removes the _trim_1 naming format.
+	base=$(echo $R1 | sed 's/_trim_R1$//')			# Removes the _trim_1 naming format.
 
 
-	unicycler -1 ${DIR_READS}/${base}*_trim_1.fastq.gz \	# Input: forward reads
-		  -2 ${DIR_READS}/${base}*_trim_2.fastq.gz \	# Input: reverse reads
-	  	  -t ${SLURM_CPUS_PER_TASK} \			# CPUS (using what is assigned in SLURM options)
-	  	  -o ${DIR_OUT_ASSEMBLY}/${base}		# Output Directory
+	unicycler -1 ${DIR_READS}/${base}*_trim_R1.fastq.gz \
+		  -2 ${DIR_READS}/${base}*_trim_R2.fastq.gz \
+	  	  -t ${SLURM_CPUS_PER_TASK} \
+	  	  -o ${DIR_OUT_ASSEMBLY}/${base}
+
+	 mv "${DIR_OUT_ASSEMBLY}/${base}/assembly.fasta" "${DIR_OUT_ASSEMBLY}/${base}/${base}.fasta"
 
 done								# Finalise the loop
 
